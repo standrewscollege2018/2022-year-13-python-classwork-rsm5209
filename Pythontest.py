@@ -11,6 +11,9 @@ class Enemy:
         # Set the health
         self._health = health
         
+        # Append the new enemy into the enemy_list
+        enemy_list.append(self)
+        
         # Scare the world with a villanous laugh!
         print("Mwa ha ha ha")
    
@@ -34,10 +37,17 @@ class Enemy:
         else:
             print(f"Ouch, {self._name} is hurt")
 
+# Create a list to store all enemy objects
+enemy_list = []
+
 # Create a new enemy object 
-enemy1 = Enemy("Gru", 20)
-enemy2 = Enemy("Bob", 12)
-enemy1.attacked(2)
-print (f"{enemy1.get_name()} has {enemy1.get_health()} health left")
-print (f"{enemy2.get_name()} has {enemy2.get_health()} health left")
-enemy1.attacked(2)
+Enemy("Gru", 20)
+Enemy("Vlad the Impaler", 12)
+
+def display_enemies():
+    ''' This function loops through the enemy_list and displays their names and health '''
+    
+    for e in enemy_list:
+        print(f"{e.get_name()} has {e.get_health()} health")
+        
+display_enemies()
